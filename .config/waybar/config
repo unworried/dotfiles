@@ -1,0 +1,107 @@
+{
+	"reload_style_on_change": true,
+	"layer": "top",
+	"position": "bottom",
+	"spacing": 0,
+	"height": 28,
+	"modules-left": [
+		"sway/workspaces"
+	],
+	"modules-right": [
+		"group/tray-drawer",
+		"cpu",
+		"memory",
+		"disk",
+		"network",
+		"wireplumber",
+		"battery",
+		"custom/clock" /* SEE COMMENTS @DEF */
+	],
+	"group/tray-drawer": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 200
+		},
+		"modules": [
+			"custom/expand",
+			"tray"
+		]
+	},
+	"custom/expand": {
+		"format": "❮",
+		"tooltip": false
+	},
+	"sway/workspaces": {
+		"disable-scroll": false,
+		"all-outputs": false,
+		"format": "{name}",
+		"on-click": "activate"
+	},
+	"cpu": {
+		"interval": 2,
+		"format": "cpu {usage}%",
+		"on-click": "foot -e btop"
+	},
+	"memory": {
+		"format": "mem {used:0.1f}gb",
+		"interval": 2,
+		"on-click": "foot -e btop"
+	},
+	"disk": {
+		"interval": 30,
+		"format": "disk {percentage_free}%",
+		"tooltip-format": "Used: {used}\nFree: {free}\nTotal: {total}",
+		"path": "/",
+		"on-click": "foot -e duf" // Change this
+	},
+	/*"clock": {
+		"format": "{:L%H:%M}",
+		"format-alt": "{:L%A %d %B}",
+		"tooltip": false
+	},*/
+	/* date extension to mitigate bug
+	 * Bug: tzdata@2026b
+	 * https://github.com/Alexays/waybar/issues/5006
+	 */
+	"custom/clock": {
+    		"exec": "date '+%Y-%m-%d %H:%M'",
+    		"interval": 60,
+    		"tooltip": false
+	},
+	"network": {
+		"interface": "wlp1s0f0*", // Change this
+		"format-wifi": "wifi {essid}",
+		"format-ethernet": "eth {ifname}",
+		"format-disconnected": "wifi --",
+		"tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+		"tooltip-format-disconnected": "Disconnected",
+		"interval": 3,
+		"on-click": "nmgui"
+	},
+	"battery": {
+		"format": "bat {capacity}%", // change this
+		"format-discharging": "bat {capacity}%",
+		"format-charging": "bat {capacity}%",
+		"format-plugged": "bat {capacity}%",
+		"tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+		"tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+		"interval": 5,
+		"states": {
+			"warning": 20,
+			"critical": 10
+		}
+	},
+	"wireplumber": {
+		"format": "vol {volume}%",
+		"format-muted": "vol muted",
+		"tooltip-format": "vol {volume}%",
+		"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+	},
+	"tray": {
+		"icon-size": 12,
+		"spacing": 4
+	}
+}
