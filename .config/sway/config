@@ -22,6 +22,9 @@ gaps outer 3
 # set default border
 default_border pixel 2
 
+# set wallpaper
+output * bg $HOME/.config/sway/wallpaper.jpg fill
+
 
 # start pipewire
 exec pipewire
