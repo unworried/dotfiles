@@ -9,6 +9,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 export XDG_SESSION_TYPE=wayland
 
+export QT_QPA_PLATFORM="wayland" # TODO: What does this intail?
+
 export EDITOR=nvim
 
 
