@@ -202,15 +202,27 @@ bindsym --locked XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ tog
 #=============================================#
 # Keyboard Shortcuts (Launching Applications) #
 #=============================================#
+set $term foot
+
+set $menu $term --app-id=launcher --title=launcher --window-size-chars=90x24 bash -lc \
+    'compgen -c \
+    | sort -u \
+    | fzf --prompt="./" --marker="*" --height=100% --layout=reverse --border=rounded --margin=0 \
+    --padding=1 --info=inline --cycle --no-multi \
+    | xargs -r -I{} swaymsg exec -- "{}"'
+for_window [app_id="launcher"] floating enable, border none, resize set 900 280, move position center
+
 # launch browser
 bindsym $mod+Shift+b exec firefox
 
 # launch terminal emulator
-set $term foot
 bindsym $mod+Shift+t exec $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# open exec menu
+bindsym $mod+d exec $menu
 
 
 
