@@ -1,0 +1,5 @@
+[user]
+	name = unworried
+	email = unworried@tuta.io
+[core]
+    autocrlf = input
