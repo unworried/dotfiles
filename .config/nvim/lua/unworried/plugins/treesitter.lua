@@ -7,6 +7,7 @@ return {
       local parsers = {
         "lua",
         "gitignore",
+        "c",
       }
 
       local group = vim.api.nvim_create_augroup("UnworriedTreesitter", { clear = true })
