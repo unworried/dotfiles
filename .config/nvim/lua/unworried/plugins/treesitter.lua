@@ -9,6 +9,7 @@ return {
         "gitignore",
         "c",
         "bash",
+        "make",
       }
 
       local group = vim.api.nvim_create_augroup("UnworriedTreesitter", { clear = true })
