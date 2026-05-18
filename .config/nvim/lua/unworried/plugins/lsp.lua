@@ -1,3 +1,4 @@
+-- lua/unworried/plugins/lsp.lua
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -72,6 +73,7 @@ return {
         Lua = {},
       },
     })
+
     vim.lsp.enable('lua_ls')
     vim.lsp.enable('clangd')
   end,
