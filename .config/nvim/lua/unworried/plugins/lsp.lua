@@ -1,6 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp"
+  },
   config = function()
     vim.diagnostic.config({
       update_in_insert = true,
@@ -12,6 +15,17 @@ return {
         header = "",
         prefix = "",
       },
+    })
+
+    local capabilities = vim.tbl_deep_extend(
+      "force",
+      {},
+      vim.lsp.protocol.make_client_capabilities(),
+      require("cmp_nvim_lsp").default_capabilities()
+    )
+
+    vim.lsp.config('*', {
+      capabilities = capabilities,
     })
 
     vim.lsp.config('lua_ls', {
@@ -59,5 +73,6 @@ return {
       },
     })
     vim.lsp.enable('lua_ls')
+    vim.lsp.enable('clangd')
   end,
 }
