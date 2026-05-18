@@ -2,9 +2,6 @@
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp"
-  },
   config = function()
     vim.diagnostic.config({
       update_in_insert = true,
@@ -18,12 +15,7 @@ return {
       },
     })
 
-    local capabilities = vim.tbl_deep_extend(
-      "force",
-      {},
-      vim.lsp.protocol.make_client_capabilities(),
-      require("cmp_nvim_lsp").default_capabilities()
-    )
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
     vim.lsp.config('*', {
       capabilities = capabilities,
