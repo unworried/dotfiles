@@ -1,5 +1,10 @@
 [user]
 	name = unworried
 	email = unwrd@proton.me
+	signingkey = /home/jack/.ssh/github_signing_ed25519
 [core]
     autocrlf = input
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
