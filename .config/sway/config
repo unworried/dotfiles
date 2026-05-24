@@ -39,8 +39,16 @@ seat * hide_cursor when-typing enable
 
 # keyboard
 input type:keyboard {
-	repeat_delay 240
+    repeat_delay 240
 	repeat_rate 100
+}
+
+# touchpad
+input type:touchpad {
+    events enabled
+    drag disabled
+    drag_lock disabled
+    click_method clickfinger
 }
 
 
