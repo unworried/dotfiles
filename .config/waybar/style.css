@@ -1,143 +1,173 @@
-/* colors */
-@define-color waybar-bg #121212;
-@define-color waybar-fg #d0d0d0;
+/* Rosé Pine Palette Waybar */
 
-@define-color waybar-warning #7a8b6e;
-@define-color waybar-danger #6b3a3a;
+@define-color base      #232136;
+@define-color surface   #2a273f;
+@define-color overlay   #393552;
+@define-color muted     #6e6a86;
+@define-color subtle    #908caa;
+@define-color text      #e0def4;
 
-@define-color waybar-surface #1e1e1e;
-@define-color waybar-surface-hover #2a2a2a;
-@define-color waybar-border #3a3a3a;
-@define-color waybar-workspace-active-bg #333333;
-@define-color waybar-workspace-occupied-fg #a0a0a0;
-@define-color waybar-workspace-empty-fg #505050;
+@define-color love      #eb6f92;
+@define-color gold      #f6c177;
+@define-color foam      #9ccfd8;
+@define-color iris      #c4a7e7;
 
 * {
-  background-color: transparent;
-  color: @waybar-fg;
+  background: transparent;
+  color: @text;
   border: none;
   border-radius: 0;
-  font-family: "Inter";
-  font-size: 11px;
-}
-
-tooltip {
-  background: @waybar-bg;
-  border-radius: 4px;
-  padding: 6px 10px;
-}
-
-menu {
-  background: @waybar-surface;
-  border: 1px solid @waybar-border;
-  padding: 4px;
-}
-
-menu menuitem:hover {
-  background: @waybar-surface-hover;
+  font-family: "Inter", "Hack", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 window#waybar {
-  background: @waybar-bg;
+  background: @base;
+  border-top: 1px solid @overlay;
 }
 
-.modules-center {
-  padding: 0 80px;
+/* Workspaces */
+
+#workspaces {
+  margin-left: 6px;
 }
 
 #workspaces button {
-  padding: 0 2px;
-  margin: 0 1px;
-  min-width: 12px;
-  min-height: 12px;
-  background-color: transparent;
-  color: @waybar-workspace-empty-fg;
-  font-weight: 400;
-  transition: all 100ms ease;
-  border-radius: 0;
-  border: none;
-}
-
-#workspaces button.focused {
-  background-color: @waybar-workspace-active-bg;
-  font-weight: 500;
-}
-
-#workspaces button.persistent,
-#workspaces button.empty {
-  color: @waybar-workspace-empty-fg;
-  opacity: 0.5;
+  min-width: 18px;
+  min-height: 20px;
+  padding: 0 6px;
+  margin: 4px 2px;
+  color: @muted;
+  background: transparent;
+  border-radius: 8px;
+  font-weight: 600;
 }
 
 #workspaces button.visible {
-  color: @waybar-workspace-occupied-fg;
+  color: @subtle;
+  background: @surface;
 }
 
-#mpris.paused {
-  opacity: 0.4;
+#workspaces button.focused,
+#workspaces button.active {
+  color: @base;
+  background: @muted;
+  font-weight: 800;
 }
 
-#memory,
+#workspaces button.empty {
+  color: @muted;
+  opacity: 0.45;
+}
+
+#workspaces button:hover {
+  color: @text;
+  background: @overlay;
+}
+
+/* Right-side modules */
+
 #cpu,
+#memory,
 #disk,
-#battery,
 #network,
 #wireplumber,
-#backlight,
-#tray,
-#custom-screenrecording-indicator,
-#custom-expand,
-#mpris,
-#clock,
+#battery,
 #custom-clock,
-#custom-idle-indicator,
-#custom-dnd-indicator {
-  padding: 0 6px;
-  font-weight: 600;
-  opacity: 1;
-  transition: opacity 150ms ease;
-}
-
-#clock,
-#custom-clock {
-  font-weight: 700;
-}
-
+#tray,
 #custom-expand {
-  font-size: 10px;
+  background: @surface;
+  color: @text;
+  padding: 0 8px;
+  margin: 4px 2px;
+  border-radius: 8px;
 }
 
-#custom-screenrecording-indicator {
-  min-width: 12px;
-  font-size: 12px;
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#network:hover,
+#wireplumber:hover,
+#battery:hover,
+#custom-clock:hover,
+#tray:hover,
+#custom-expand:hover {
+  background: @overlay;
 }
 
-#custom-screenrecording-indicator.active {
-  color: @waybar-danger;
+#custom-clock {
+  color: @iris;
+  font-weight: 800;
+  padding: 0 10px;
 }
 
-#bluetooth,
+#battery.charging,
+#battery.plugged {
+  color: @foam;
+}
+
 #battery.warning {
-  color: @waybar-warning;
+  color: @gold;
 }
 
 #battery.critical {
-  color: @waybar-danger;
-  animation: blink 1s infinite;
+  color: @love;
+  animation: blink 1s steps(2) infinite;
 }
 
-#cpu,
-#memory,
-#network,
-#wireplumber,
-#battery,
-#clock,
-#custom-clock {
-  margin: 0 1px;
+/* Tray drawer */
+
+#custom-expand {
+  color: @muted;
+  padding: 0 6px;
 }
+
+#tray {
+  padding: 0 6px;
+}
+
+/* Tooltips */
+
+tooltip,
+tooltip.background {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+tooltip box {
+  background: @surface;
+  border: 1px solid @overlay;
+  border-radius: 0;
+  padding: 6px 8px;
+}
+
+tooltip label {
+  color: @text;
+  background: transparent;
+}
+
+/* Menus */
+
+menu {
+  background: @surface;
+  border: 1px solid @overlay;
+  padding: 4px;
+}
+
+menuitem {
+  padding: 4px 8px;
+}
+
+menuitem:hover {
+  background: @overlay;
+}
+
+/* Animations */
 
 @keyframes blink {
   50% {
-    opacity: 0.5;
+    opacity: 0.45;
   }
 }
