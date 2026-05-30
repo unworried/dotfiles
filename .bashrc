@@ -19,7 +19,6 @@ PS1="${COLOR_USER}\u@\h${COLOR_RESET}:${COLOR_PATH}\w${COLOR_GIT}"'$(__git_ps1 "
 
 # Custom Aliases #
 alias ls='ls --color=auto'
-alias xi='doas xbps-install'
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 
