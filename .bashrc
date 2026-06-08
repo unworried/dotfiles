@@ -17,6 +17,9 @@ COLOR_GIT='\[\033[01;31m\]'       # Red
 
 PS1="${COLOR_USER}\u@\h${COLOR_RESET}:${COLOR_PATH}\w${COLOR_GIT}"'$(__git_ps1 " (%s)")'"${COLOR_RESET}\$ "
 
+# add ~/.local/bin to $PATH #
+export PATH="$HOME/.local/bin:$PATH"
+
 # Custom Aliases #
 alias ls='ls --color=auto'
 
