@@ -17,6 +17,12 @@ COLOR_GIT='\[\033[01;31m\]'       # Red
 
 PS1="${COLOR_USER}\u@\h${COLOR_RESET}:${COLOR_PATH}\w${COLOR_GIT}"'$(__git_ps1 " (%s)")'"${COLOR_RESET}\$ "
 
+# Use bash-completion, if available, and avoid double-sourcing
+[[ $PS1 &&
+  ! ${BASH_COMPLETION_VERSINFO:-} &&
+  -f /usr/share/bash-completion/bash_completion ]] &&
+    . /usr/share/bash-completion/bash_completion
+
 # add ~/.local/bin to $PATH #
 export PATH="$HOME/.local/bin:$PATH"
 
