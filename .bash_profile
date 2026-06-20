@@ -15,10 +15,15 @@ export QT_QPA_PLATFORM="wayland" # TODO: What does this intail?
 
 export EDITOR=nvim
 
+# set ssh-agent socket
 if [ -d "$XDG_RUNTIME_DIR" ]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
 fi
 
+# start ssh-agent if needed
+if [ ! -S "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -a "$SSH_AUTH_SOCK" -s)" > /dev/null
+fi
 
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
