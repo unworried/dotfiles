@@ -10,3 +10,5 @@
 	gpgsign = true
 [init]
 	defaultBranch = main
+[gpg "ssh"]
+	allowedSignersFile = /home/jack/.config/git/allowed_signers
