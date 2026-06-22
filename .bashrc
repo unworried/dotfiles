@@ -33,3 +33,5 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 
 alias vi='nvim'
 alias vim='nvim'
+
+alias wlc='wl-copy -n <'
