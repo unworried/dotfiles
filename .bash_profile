@@ -1,5 +1,4 @@
 # .bash_profile
-
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
@@ -9,9 +8,12 @@ export XDG_CACHE_HOME="$HOME/.cache"
 if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 fi
-export XDG_SESSION_TYPE=wayland
 
-export QT_QPA_PLATFORM="wayland" # TODO: What does this intail?
+export SDL_VIDEODRIVER=wayland
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=sway
+export QT_QPA_PLATFORM="wayland"
+export DISABLE_RTKIT=1
 
 export EDITOR=nvim
 
