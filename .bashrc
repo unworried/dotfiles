@@ -26,12 +26,13 @@ PS1="${COLOR_USER}\u@\h${COLOR_RESET}:${COLOR_PATH}\w${COLOR_GIT}"'$(__git_ps1 "
 # add ~/.local/bin to $PATH #
 export PATH="$HOME/.local/bin:$PATH"
 
+export HISTFILE="$XDG_STATE_HOME"/bash/history
+
 # Custom Aliases #
 alias ls='ls --color=auto'
+alias wlc='wl-copy -n <'
 
 alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 
 alias vi='nvim'
 alias vim='nvim'
-
-alias wlc='wl-copy -n <'
