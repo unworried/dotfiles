@@ -23,7 +23,7 @@ gaps outer 3
 default_border pixel 2
 
 # set wallpaper
-output * bg $HOME/.config/sway/wallpaper.jpg fill
+output * bg $HOME/.config/wallpaper.jpg fill
 
 # start pipewire
 exec pipewire
@@ -53,7 +53,7 @@ input type:touchpad {
 
 # swayidle sleep + swaylock
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000'
+    timeout 300 'swaylock'
 for_window [app_id="Firefox"] inhibit_idle fullscreen
 
 
