@@ -1,0 +1,8 @@
+# ~/.config/swaylock/config
+
+ignore-empty-password
+show-failed-attempts
+daemonize
+scaling=fill
+color=000000
+image=~/.config/wallpaper.jpg
