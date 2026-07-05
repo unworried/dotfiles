@@ -5,4 +5,4 @@ show-failed-attempts
 daemonize
 scaling=fill
 color=000000
-image=~/.config/wallpaper.jpg
+image=/home/jack/.local/share/wallpapers/current

@@ -23,7 +23,7 @@ gaps outer 3
 default_border pixel 2
 
 # set wallpaper
-output * bg $HOME/.config/wallpaper.jpg fill
+output * bg $XDG_DATA_HOME/wallpapers/current fill
 
 # start pipewire
 exec pipewire
