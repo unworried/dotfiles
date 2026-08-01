@@ -3,6 +3,13 @@
 ignore-empty-password
 show-failed-attempts
 daemonize
+indicator-idle-visible
+indicator-radius=80
+indicator-thickness=12
+ring-color=ffffff
+text-color=ffffff
+inside-color=00000088
+line-color=ffffff
 scaling=fill
 color=000000
 image=/home/jack/.local/share/wallpapers/current
