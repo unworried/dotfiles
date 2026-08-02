@@ -1,0 +1,15 @@
+#!/bin/sh
+
+runtime_dir="/run/user/$(id -u)"
+socket="$runtime_dir/ssh-agent.sock"
+
+if [ ! -d "$runtime_dir" ]; then
+	printf 'ssh-agent: runtime directory does not exist: %s\n' \
+		"$runtime_dir" >&2
+	exit 1
+fi
+
+umask 077
+rm -f "$socket"
+
+exec ssh-agent -D -a "$socket"

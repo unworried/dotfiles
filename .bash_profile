@@ -18,14 +18,10 @@ export DISABLE_RTKIT=1
 export EDITOR=nvim
 
 # set ssh-agent socket
-if [ -d "$XDG_RUNTIME_DIR" ]; then
-    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
-fi
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
 
-# start ssh-agent if needed
-if [ ! -S "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -a "$SSH_AUTH_SOCK" -s)" > /dev/null
-fi
+# set user service directory
+export SVDIR="$HOME/service"
 
 # Get the aliases and functions
 [ -f $HOME/.bashrc ] && . $HOME/.bashrc
