@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec chpst -e "$TURNSTILE_ENV_DIR" \
+    ssh-agent -D -a "$XDG_RUNTIME_DIR/ssh-agent.sock"
