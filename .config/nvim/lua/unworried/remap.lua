@@ -2,7 +2,6 @@
 -- set global leader to <space>
 vim.g.mapleader = " "
 -- (normal)<leader>pv : open netrw
--- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pv", function()
     vim.cmd.Explore(vim.fn.expand("%:p:h"))
 end, { desc = "Open current file directory" })
@@ -23,6 +22,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 -- centre cursor line when jumping to previous search result
 vim.keymap.set("n", "N", "Nzzzv")
+-- (normal)=ap : reindent current paragraph without moving cursor position
+vim.keymap.set("n", "=ap", "mz=ap`z")
 
 -- (select)<leader>p : paste current register and void overwritten data
 -- data is voided through the black hole register (_)
