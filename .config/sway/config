@@ -1,3 +1,15 @@
+exec_always turnstile-update-runit-env \
+    WAYLAND_DISPLAY \
+    SWAYSOCK \
+    DISPLAY \
+    XAUTHORITY \
+    XDG_CURRENT_DESKTOP \
+    XDG_SESSION_TYPE \
+    SSH_AUTH_SOCK
+
+exec_always dbus-update-activation-environment --all
+
+
 #========================#
 # Appearance and Theming #
 #========================#
@@ -24,9 +36,6 @@ default_border pixel 2
 
 # set wallpaper
 output * bg $XDG_DATA_HOME/wallpapers/current fill
-
-# start pipewire
-exec pipewire
 
 # cursor
 set $cursor_theme Adwaita
