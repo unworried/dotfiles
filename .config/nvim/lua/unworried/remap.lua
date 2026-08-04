@@ -2,7 +2,10 @@
 -- set global leader to <space>
 vim.g.mapleader = " "
 -- (normal)<leader>pv : open netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", function()
+    vim.cmd.Explore(vim.fn.expand("%:p:h"))
+end, { desc = "Open current file directory" })
 
 -- (visual)<shift>j : shift current line down once
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
