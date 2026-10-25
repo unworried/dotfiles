@@ -43,7 +43,7 @@ set $cursor_size 20
 
 seat * xcursor_theme $cursor_theme $cursor_size
 seat * hide_cursor 8000
-seat * hide_cursor when-typing enable
+# seat * hide_cursor when-typing enable
 
 # keyboard
 input type:keyboard {
@@ -55,15 +55,23 @@ input type:keyboard {
 # touchpad
 input type:touchpad {
     events enabled
+
+    tap disabled
     drag disabled
     drag_lock disabled
+
+    dwt disabled
+    dwtp disabled
+
     click_method clickfinger
+    clickfinger_button_map lrm
+
+    scroll_method two_finger
 }
 
 # swayidle sleep + swaylock
 exec swayidle -w \
     timeout 300 'swaylock'
-for_window [app_id="Firefox"] inhibit_idle fullscreen
 
 
 
@@ -231,13 +239,11 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 #=============================================#
 set $term foot
 
-set $menu $term --app-id=launcher --title=launcher --window-size-chars=90x24 bash -lc \
     'compgen -c \
     | sort -u \
     | fzf --prompt="./" --marker="*" --height=100% --layout=reverse --border=rounded --margin=0 \
     --padding=1 --info=inline --cycle --no-multi \
     | xargs -r -I{} swaymsg exec -- "{}"'
-for_window [app_id="launcher"] floating enable, border none, resize set 900 280, move position center
 
 # launch browser
 bindsym $mod+Shift+b exec firefox
