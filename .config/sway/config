@@ -37,6 +37,9 @@ default_border pixel 2
 # set wallpaper
 output * bg $XDG_DATA_HOME/wallpapers/current fill
 
+# set display scaling
+output HDMI-A-1 scale 1.5
+
 # cursor
 set $cursor_theme Adwaita
 set $cursor_size 20
@@ -72,6 +75,7 @@ input type:touchpad {
 # swayidle sleep + swaylock
 exec swayidle -w \
     timeout 300 'swaylock'
+for_window [shell="."] inhibit_idle fullscreen
 
 
 
@@ -239,11 +243,13 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 #=============================================#
 set $term foot
 
+set $menu $term --app-id=applauncher --title=launcher --window-size-chars=90x24 bash -lc \
     'compgen -c \
     | sort -u \
     | fzf --prompt="./" --marker="*" --height=100% --layout=reverse --border=rounded --margin=0 \
     --padding=1 --info=inline --cycle --no-multi \
     | xargs -r -I{} swaymsg exec -- "{}"'
+for_window [app_id="^applauncher$"] floating enable, border none, resize set 900 280, move position center
 
 # launch browser
 bindsym $mod+Shift+b exec firefox
@@ -254,8 +260,12 @@ bindsym $mod+Shift+t exec $term
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# open exec menu
+# launch exec menu
 bindsym $mod+d exec $menu
+
+# launch quickmenu
+bindsym $mod+c exec foot -a quickmenu quickmenu
+for_window [app_id="^quickmenu$"] floating enable, resize set 900 280, move position center
 
 
 
