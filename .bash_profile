@@ -10,6 +10,11 @@ export XDG_CURRENT_DESKTOP=sway
 export QT_QPA_PLATFORM="wayland"
 export DISABLE_RTKIT=1
 
+# set config locations for unruly tools
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=${XDG_CONFIG_HOME:-$HOME/.config}/java"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npmrc"
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+
 export EDITOR=nvim
 
 # set ssh-agent socket

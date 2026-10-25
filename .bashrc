@@ -37,4 +37,6 @@ alias dot='/usr/bin/git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 alias vi='nvim'
 alias vim='nvim'
 
+alias irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi'
+
 eval "$(zoxide init bash)"
