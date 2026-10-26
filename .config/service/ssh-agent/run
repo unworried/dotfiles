@@ -1,4 +1,9 @@
 #!/bin/sh
 
-exec chpst -e "$TURNSTILE_ENV_DIR" \
-    ssh-agent -D -a "$XDG_RUNTIME_DIR/ssh-agent.sock"
+: "${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR is not set}"
+: "${TURNSTILE_ENV_DIR:?TURNSTILE_ENV_DIR is not set}"
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
+printf '%s\n' "$SSH_AUTH_SOCK" > "$TURNSTILE_ENV_DIR/SSH_AUTH_SOCK"
+
+exec ssh-agent -D -a "$SSH_AUTH_SOCK"

@@ -4,8 +4,7 @@ exec_always turnstile-update-runit-env \
     DISPLAY \
     XAUTHORITY \
     XDG_CURRENT_DESKTOP \
-    XDG_SESSION_TYPE \
-    SSH_AUTH_SOCK
+    XDG_SESSION_TYPE
 
 exec_always dbus-update-activation-environment --all
 
