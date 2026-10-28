@@ -1,9 +1,0 @@
-#!/bin/sh
-
-umask 077
-
-exec chpst -e "$TURNSTILE_ENV_DIR" \
-    /usr/bin/syncthing serve \
-        --home="$HOME/.local/state/syncthing" \
-        --no-browser \
-        --no-restart
